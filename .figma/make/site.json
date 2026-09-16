@@ -1,0 +1,10 @@
+{
+  "description": "EduSpace is a minimalist responsive platform for students to find and book tutoring sessions, manage bookings, and access learning materials seamlessly.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
