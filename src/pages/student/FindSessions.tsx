@@ -260,7 +260,7 @@ function TutorCard({ tutor, navigate }: { tutor: Tutor; navigate: Navigate }) {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => navigate({ page: 'tutor-profile', tutorId: tutor.id })}
+            onClick={() => navigate({ page: 'student-tutor-profile', tutorId: tutor.id })}
             className="text-xs font-medium cursor-pointer bg-white"
           >
             Profile

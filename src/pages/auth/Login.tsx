@@ -17,7 +17,7 @@ export default function Login({ navigate }: LoginProps) {
     setLoading(true)
     setError(null)
 
-    const { error: signInError } = await supabase.auth.signInWithPassword({
+    const { data: authData, error: signInError } = await supabase.auth.signInWithPassword({
       email: email.trim(),
       password,
     })
@@ -27,6 +27,24 @@ export default function Login({ navigate }: LoginProps) {
     if (signInError) {
       setError(signInError.message)
       return
+    }
+
+    if (authData?.user) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', authData.user.id)
+        .maybeSingle()
+
+      if (profile?.role === 'admin') {
+        navigate('admin-dashboard')
+        return
+      }
+
+      if (profile?.role === 'tutor') {
+        navigate('tutor-dashboard')
+        return
+      }
     }
 
     navigate('dashboard')
@@ -78,7 +96,7 @@ export default function Login({ navigate }: LoginProps) {
                 <GraduationCapIcon size={22} />
               </div>
               <h1 className="text-2xl font-bold tracking-tight text-foreground">Welcome back</h1>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-1">Sign in to your student account</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">Sign in to your EduSpace account</p>
             </div>
 
             {/* Error Message */}

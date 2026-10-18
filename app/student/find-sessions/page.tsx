@@ -16,7 +16,7 @@ export default function FindSessionsPage() {
         } else {
           if (target.page === 'booking' && target.tutorId) {
             router.push(`/student/booking?tutorId=${target.tutorId}`)
-          } else if (target.page === 'tutor-profile' && target.tutorId) {
+          } else if ((target.page === 'student-tutor-profile' || target.page === 'tutor-profile') && target.tutorId) {
             router.push(`/student/tutor/${target.tutorId}`)
           } else {
             router.push(`/student/${target.page}`)
@@ -32,7 +32,7 @@ export default function FindSessionsPage() {
           } else {
             if (target.page === 'booking' && target.tutorId) {
               router.push(`/student/booking?tutorId=${target.tutorId}`)
-            } else if (target.page === 'tutor-profile' && target.tutorId) {
+            } else if ((target.page === 'student-tutor-profile' || target.page === 'tutor-profile') && target.tutorId) {
               router.push(`/student/tutor/${target.tutorId}`)
             } else {
               router.push(`/student/${target.page}`)
