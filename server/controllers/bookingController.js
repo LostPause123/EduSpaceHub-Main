@@ -86,7 +86,7 @@ export function formatBookingRow(row) {
     : "";
 
   const date = !isNaN(start.getTime())
-    ? start.toISOString().split("T")[0]
+    ? `${start.getFullYear()}-${String(start.getMonth() + 1).padStart(2, "0")}-${String(start.getDate()).padStart(2, "0")}`
     : "";
 
   const location = row.room_id ? "in-person" : "online";
@@ -128,7 +128,9 @@ function resolveBookingTimes(body) {
   if (start_time) {
     start = new Date(start_time);
   } else if (date && time) {
-    start = new Date(`${date}T${time}:00`);
+    const [y, m, d] = date.split("-").map(Number);
+    const [hh, mm] = time.split(":").map(Number);
+    start = new Date(y, m - 1, d, hh || 0, mm || 0, 0);
   }
 
   if (!start || isNaN(start.getTime())) {

@@ -887,7 +887,7 @@ export default function Dashboard({ navigate }: DashboardProps) {
                   className="p-4 cursor-pointer hover:shadow-sm transition-all"
                   onClick={() =>
                     navigate({
-                      page: 'tutor-profile',
+                      page: 'student-tutor-profile',
                       tutorId: tutor.id,
                     })
                   }

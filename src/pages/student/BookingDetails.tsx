@@ -187,7 +187,7 @@ export default function BookingDetails({ navigate, bookingId }: BookingDetailsPr
             variant="outline"
             size="sm"
             className="ml-auto shrink-0"
-            onClick={() => navigate({ page: 'tutor-profile', tutorId: booking.tutorId })}
+            onClick={() => navigate({ page: 'student-tutor-profile', tutorId: booking.tutorId })}
           >
             View profile
           </Button>

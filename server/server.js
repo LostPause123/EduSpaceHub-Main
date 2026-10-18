@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import { supabase } from "./supabase.js";
 import bookingRoutes from "./routes/bookingRoutes.js";
 import tutorRoutes from "./routes/tutorRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
+import tutorSelfRoutes from "./routes/tutorSelfRoutes.js";
+import materialRoutes from "./routes/materialRoutes.js";
 
 dotenv.config();
 
@@ -17,6 +20,9 @@ app.use(express.json());
 // Routes
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/tutors", tutorRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/tutor", tutorSelfRoutes);
+app.use("/api/materials", materialRoutes);
 
 // Health check endpoint
 app.get("/api/health", (req, res) => {
