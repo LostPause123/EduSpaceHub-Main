@@ -68,6 +68,8 @@ git push -u origin migration/replace-app
 
 Open a pull request and verify its changed-file list before merging. Do not use `git add -A` for a broad replacement unless every deletion and addition has been reviewed.
 
-## Current limitation
+## Current status
 
-The local project is available as a candidate update, but it is an extracted folder without `.git` metadata and Git is not installed in the available terminal. I can compare public files, but cannot create a remote branch or push from this workspace. Clone the repository and apply the reviewed updates on `migration/replace-app`; never upload the local `.env`. The local Vite production build passes with `pnpm run build:vite`, with a bundle-size warning above 500 kB.
+The candidate update has been pushed to `migration/replace-app` as commit `07f6853`; `main` remains unchanged. The Next.js and Vite production builds pass with temporary placeholder Supabase keys, and no `.env` or generated build output is included. Vite reports a bundle-size warning above 500 kB.
+
+Create a pull request from `migration/replace-app` to `main` at `https://github.com/LostPause123/EduSpaceHub-Main/pull/new/migration/replace-app`. Review the changed-file list and confirm the production runtime before merging.
